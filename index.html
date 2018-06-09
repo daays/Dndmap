@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" type="text/css" href="map.css">
 		<title>PS_Bramus.GoogleMapsTileCutter</title>
 		<meta charset="utf-8" />
 		<style>
@@ -24,6 +25,8 @@
 	</head>
 	<body>
 		<div id="map"><span class="loading">loading tiles...</span></div>
+		
+
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6S1N-bbElEErIE-_9cGRm_p-d7R2ZmE&callback=initMap"></script>
 		<script>
 
@@ -86,17 +89,20 @@
 							} else {
 								return 'empty.jpg';
 							}
+
 						},
 						tileSize: new google.maps.Size(256, 256),
-						maxZoom: 6,
+						maxZoom: 7,
 						name: 'PS_Bramus.GoogleMapsTileCutter'
 					});
+
 
 					// Basic options for our map
 					var myOptions = {
 						center: new google.maps.LatLng(0, 0),
 						zoom: 2,
 						minZoom: 0,
+						backgroundColor:'black',
 						streetViewControl: false,
 						mapTypeControl: false,
 						mapTypeControlOptions: {
@@ -120,16 +126,62 @@ var image = {
 
 
         var marker = new google.maps.Marker({
-          position : new google.maps.LatLng(10.55, -95.85),
+          position : new google.maps.LatLng(9.606, -84.9714),
           map : map,
-          title : "hello",
+          title : "marker",
           icon: image,
-          draggable:true
+          draggable:false
         });
+        google.maps.event.addListener(
+          marker,
+          "click",
+         
+          function (e){
+            window.open("vill.html");
+          });
+            var marker2 = new google.maps.Marker({
+          position : new google.maps.LatLng(17.421806537336217, -76.67210108952321),
+          map : map,
+          title : "marker 2",
+          icon: image,
+          draggable:false
+        });
+        google.maps.event.addListener(
+          marker2,
+          "click",
+          function (e){
+            window.open("vill.html");
+          });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         google.maps.event.addListener(map, 'click', function(event) {
+    alert("Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
+  });
           
 
 				}
 		</script>
+
 
 	</body>
 </html>
